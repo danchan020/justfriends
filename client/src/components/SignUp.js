@@ -8,7 +8,6 @@ export default function SignUp({navigate}) {
 
   const user = useSelector((state) => state.user.value)
   const dispatch = useDispatch()
-  console.log(user)
 
   const newUser = {
     first_name: "",
@@ -41,8 +40,7 @@ export default function SignUp({navigate}) {
        if (r.ok) {
           r.json()
              .then((user) => dispatch(login(user)))
-             .then(console.log(user))
-              // navigate("/home")
+             .then(navigate("/home")) 
        } else {
           r.json().then((errorData) => setError(errorData.error));
        }
