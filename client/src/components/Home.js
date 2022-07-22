@@ -4,7 +4,7 @@ import { logout } from  '../features/user'
 
 export default function Home({handleSignOut}) {
   const user = useSelector((state) => state.user.value)
-  console.log(user)
+  // console.log(user)
 
   return (
     <div onClick={handleSignOut}>

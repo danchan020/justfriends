@@ -53,12 +53,12 @@ export default function SignUp({navigate}) {
       <form onSubmit={handleSubmit}>
         <FormControl onChange={handleChange}>
           <Stack spacing={3}>
-            <Input variant="filled" bg="tertiary" type="text" value={signUpData.first_name} class="form-control" id="first_name" placeholder="First Name" width={130}/>
-            <Input variant="filled" bg="tertiary" type="text" value={signUpData.last_name} class="form-control" id="last_name" placeholder="Last Name" width={130}/>
-            <Input variant="filled" bg="tertiary" type="email" value={signUpData.email} class="form-control" id="email" placeholder="Email" width={300}/>
-            <Input variant="filled" bg="tertiary" type="text" value={signUpData.username} class="form-control" id="username" placeholder="Usename" width={300}/>
-            <Input variant="filled" bg="tertiary" type="password" value={signUpData.password} class="form-control" id="password" placeholder="Password" width={300}/>
-            <Input variant="filled" bg="tertiary" type="password" value={signUpData.password_confirmation} class="form-control" id="password_confirmation" placeholder="Password Confirmation" width={300}/>
+            <Input variant="filled" bg="tertiary" type="text" class="form-control" id="first_name" placeholder="First Name" width={130}/>
+            <Input variant="filled" bg="tertiary" type="text" class="form-control" id="last_name" placeholder="Last Name" width={130}/>
+            <Input variant="filled" bg="tertiary" type="email" class="form-control" id="email" placeholder="Email" width={300}/>
+            <Input variant="filled" bg="tertiary" type="text" class="form-control" id="username" placeholder="Usename" width={300}/>
+            <Input variant="filled" bg="tertiary" type="password" class="form-control" id="password" placeholder="Password" width={300}/>
+            <Input variant="filled" bg="tertiary" type="password" class="form-control" id="password_confirmation" placeholder="Password Confirmation" width={300}/>
           </Stack>
             <Button  variant="solid" bg="secondary" type="submit" width={300} marginTop="15px"> Sign Up  </Button>
         </FormControl>

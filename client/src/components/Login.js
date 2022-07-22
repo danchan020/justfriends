@@ -14,7 +14,6 @@ export default function Login({navigate}) {
  };
 
  const [signInData, setSignInData] = useState(initialSignInData);
- console.log(signInData)
  const [error, setError] = useState([]);
 
  const handleChange = (e) => {
