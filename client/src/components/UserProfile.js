@@ -1,17 +1,33 @@
 import React from 'react'
-import { Avatar } from '@chakra-ui/react'
-import {useSelector ,useDispatch} from 'react-redux'
+import { VStack, HStack, Center, Avatar, Text, Tag } from '@chakra-ui/react'
+import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
+import ProfileEdit from './ProfileEdit'
+import ProfileDelete from './ProfileDelete'
 
-export default function UserProfile() {
-    const user = useSelector(selectUser)
-    const dispatch = useDispatch()
+export default function Home({handleSignOut}) {
+  const user = useSelector(selectUser)
 
   return (
     <>
-      <Avatar size='2xl' src={ user ? user.avatar : null} />
-      <div>{ user ? user.username : null }</div>
+      <Center> <img src='/capstone.png' alt='logo' width='100' height='100'/> </Center>
+      <VStack>
+        <Text> My Profile </Text>
+        <Avatar size='2xl' src={ user ? user.avatar : null} />
+        <Text> { user ? user.first_name : null }{' '}{user ? user.last_name : null} </Text>
+        <Tag> @{ user ? user.username : null }</Tag>
+        <Text> { user ? user.email : null } </Text>
+        <Text> { user ? user.bio : null } </Text>
+      </VStack>
+      <Center>
+        <HStack>
+          <ProfileEdit/>
+          <ProfileDelete handleSignOut={handleSignOut}/>
+        </HStack>
+      </Center>
+      
+      
+      <div onClick={handleSignOut}> Logout </div>
     </>
-    
   )
 }

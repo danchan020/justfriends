@@ -43,6 +43,7 @@ export default function Login({navigate}) {
   return (
     <div>
       <Center> <img src='/capstone.png' alt='logo'/> </Center>
+      <Center>
       <form onSubmit={handleSubmit}>
          <FormControl onChange={handleChange}>
             <Stack spacing={3}>
@@ -53,8 +54,10 @@ export default function Login({navigate}) {
                <Button variant="solid" bg="secondary" type="submit" width={300}> Log In </Button>
          </FormControl>
       </form>
-      <Text>Don't have an account?</Text>
-      <Link to="/signup">Sign Up</Link>
+      </Center>
+      <Center>
+         <Text>Don't have an account? {' '} <Link to="/signup">Sign Up</Link> </Text>
+      </Center>
     </div>
     
   )
