@@ -1,10 +1,17 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
+import { Avatar } from '@chakra-ui/react'
+import {useSelector ,useDispatch} from 'react-redux'
+import { selectUser } from  '../features/user'
 
 export default function UserProfile() {
-    const user = useSelector((state) => state.user.value)
+    const user = useSelector(selectUser)
+    const dispatch = useDispatch()
 
   return (
-    <div>{user.username}</div>
+    <>
+      <Avatar size='2xl' src={ user ? user.avatar : null} />
+      <div>{ user ? user.username : null }</div>
+    </>
+    
   )
 }

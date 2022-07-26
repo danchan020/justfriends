@@ -12,6 +12,9 @@ skip_before_action :authorize, only: [:create, :index, :destroy]
       render json: @current_user
    end
 
+   #@user = User.find(params[:id])
+   #@users = User.all_except(current_user)
+
    def update
       @current_user.update!(user_params)
       render json: @current_user, status: :accepted

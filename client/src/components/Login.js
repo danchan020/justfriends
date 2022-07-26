@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import '../App.css'
-import { FormControl, Input, Text, Button, Stack } from '@chakra-ui/react'
+import { Center, FormControl, Input, Text, Button, Stack } from '@chakra-ui/react'
 import { useDispatch} from 'react-redux'
 import { login } from  '../features/user'
 import { Link } from 'react-router-dom'
@@ -42,7 +42,7 @@ export default function Login({navigate}) {
 
   return (
     <div>
-      <img src='/capstone.png' alt='logo'/>
+      <Center> <img src='/capstone.png' alt='logo'/> </Center>
       <form onSubmit={handleSubmit}>
          <FormControl onChange={handleChange}>
             <Stack spacing={3}>
