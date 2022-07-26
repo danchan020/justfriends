@@ -16,10 +16,12 @@ export default function SignUp({navigate}) {
     username: "",
     password: "",
     password_confirmation: "",
-    avatar: ""
+    avatar: "",
+    bio: "",
  };
 
  const [signUpData, setSignUpData] = useState(newUser);
+ console.log(signUpData)
  const [error, setError] = useState([]);
 
  const handleChange = (e) => {

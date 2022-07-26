@@ -10,9 +10,19 @@ import {
   ModalBody,
   ModalCloseButton,
 } from '@chakra-ui/react'
+import { useSelector } from 'react-redux'
+import { selectUser } from  '../features/user'
 
-export default function ProfileDelete() {
+export default function ProfileDelete({handleSignOut}) {
+    const user = useSelector(selectUser)
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const handleDeleteProfile = () => {
+        fetch(`/users/${user.id}`, {
+           method: "DELETE",
+        });
+        handleSignOut();
+      };
     
   return (
     <div>
@@ -30,7 +40,7 @@ export default function ProfileDelete() {
                 </Alert>
               </ModalBody>
               <ModalFooter>
-                <Button colorScheme='red' variant='solid'>Yes, delete </Button>
+                <Button colorScheme='red' variant='solid' onClick={()=>{onClose(); handleDeleteProfile()}}> Yes, delete </Button>
                 <Button colorScheme='green' variant='solid' onClick={onClose}> No, nevermind </Button>
               </ModalFooter>
             </ModalContent>

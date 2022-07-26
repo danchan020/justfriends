@@ -22,7 +22,7 @@ export default function Home({handleSignOut}) {
       <Center>
         <HStack>
           <ProfileEdit/>
-          <ProfileDelete/>
+          <ProfileDelete handleSignOut={handleSignOut}/>
         </HStack>
       </Center>
       
