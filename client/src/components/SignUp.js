@@ -21,7 +21,6 @@ export default function SignUp({navigate}) {
  };
 
  const [signUpData, setSignUpData] = useState(newUser);
- console.log(signUpData)
  const [error, setError] = useState([]);
 
  const handleChange = (e) => {
