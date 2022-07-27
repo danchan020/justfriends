@@ -22,7 +22,7 @@ export default function TopBar({handleSignOut}) {
                 <Link to="/myprofile"> My Profile </Link>
             </MenuItem>
             <MenuItem >
-                <Link to="/chats"> My Chats </Link>
+                <Link to="/chats"> My Messages </Link>
             </MenuItem>
             <MenuItem onClick={handleSignOut}>
                 Logout

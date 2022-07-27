@@ -3,21 +3,22 @@ import { VStack, HStack, IconButton, Avatar, Text, Tag, Box } from '@chakra-ui/r
 import { ChatIcon } from '@chakra-ui/icons'
 import { CgProfile } from 'react-icons/cg'
 
-export default function UserCard({id, avatar, first_name, last_name, username}) {
+export default function UserCard({id, avatar, first_name, last_name, username, handleProfileClick}) {
   return (
-    <Box key={id} bg="tertiary" height={65} width="100%">
+    <Box  bg="tertiary" height={65} width="100%">
         <HStack>
             <Avatar size='md' src={ avatar } />
             <VStack>
                 <Text>{first_name}{ ' ' }{last_name}</Text>
                 <Tag colorScheme="yellow"> @{ username }</Tag>
             </VStack>
-            <IconButton
+            <IconButton key={id}
                 variant='outline'
                 colorScheme='green'
                 aria-label='See Profile'
                 size='sm'
                 icon={<CgProfile/>}
+                onClick={()=>{handleProfileClick(id)}}
             />
             <IconButton
                 variant='outline'

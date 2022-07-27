@@ -41,7 +41,7 @@ export default function SignUp({navigate}) {
        if (r.ok) {
           r.json()
              .then((user) => dispatch(login(user)))
-             .then(navigate("/home")) 
+             .then(navigate("/features")) 
        } else {
           r.json().then((errorData) => setError(errorData.error));
        }

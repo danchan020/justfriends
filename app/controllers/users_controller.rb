@@ -12,7 +12,11 @@ skip_before_action :authorize, only: [:create, :index, :destroy]
       render json: @current_user
    end
 
-   #@user = User.find(params[:id])
+   def profile
+      @user = User.find(params[:id])
+      render json: @user
+   end
+
    def other_users
       @users = User.all_except(@current_user)
       render json: @users
