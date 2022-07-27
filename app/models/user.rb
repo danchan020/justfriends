@@ -4,6 +4,6 @@ class User < ApplicationRecord
     validates :email, :username, :first_name, :last_name, presence: true
     validates :email, :username, uniqueness: true
 
-    scope :all_except, ->(user) {where.not(id: user)}
+    scope :all_except, ->(user) { where.not(id: user.id) }
 
 end

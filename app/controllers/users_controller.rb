@@ -13,7 +13,10 @@ skip_before_action :authorize, only: [:create, :index, :destroy]
    end
 
    #@user = User.find(params[:id])
-   #@users = User.all_except(current_user)
+   def other_users
+      @users = User.all_except(@current_user)
+      render json: @users
+   end
 
    def update
       @current_user.update!(user_params)

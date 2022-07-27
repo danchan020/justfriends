@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
   patch "/users/:id", to: "users#update"
   delete "/users/:id", to: "users#destroy"
+  get "/featuredusers", to: "users#other_users"
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

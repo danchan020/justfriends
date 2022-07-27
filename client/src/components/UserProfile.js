@@ -4,13 +4,14 @@ import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
 import ProfileEdit from './ProfileEdit'
 import ProfileDelete from './ProfileDelete'
+import TopBar from './TopBar'
 
-export default function Home({handleSignOut}) {
+export default function UserProfile({handleSignOut}) {
   const user = useSelector(selectUser)
 
   return (
     <>
-      <Center> <img src='/capstone.png' alt='logo' width='100' height='100'/> </Center>
+      <TopBar handleSignOut={handleSignOut}/>
       <VStack>
         <Text> My Profile </Text>
         <Avatar size='2xl' src={ user ? user.avatar : null} />
@@ -25,9 +26,6 @@ export default function Home({handleSignOut}) {
           <ProfileDelete handleSignOut={handleSignOut}/>
         </HStack>
       </Center>
-      
-      
-      <div onClick={handleSignOut}> Logout </div>
     </>
   )
 }

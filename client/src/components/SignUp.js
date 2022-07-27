@@ -56,9 +56,9 @@ export default function SignUp({navigate}) {
         <form onSubmit={handleSubmit}>
           <FormControl onChange={handleChange}>
             <Stack spacing={3}>
-              <HStack spacing={10}>
-                <Input variant="filled" bg="tertiary" type="text" class="form-control" id="first_name" placeholder="First Name" width={130}/>
-                <Input variant="filled" bg="tertiary" type="text" class="form-control" id="last_name" placeholder="Last Name" width={130}/>
+              <HStack spacing={5}>
+                <Input variant="filled" bg="tertiary" type="text" class="form-control" id="first_name" placeholder="First Name" width={140}/>
+                <Input variant="filled" bg="tertiary" type="text" class="form-control" id="last_name" placeholder="Last Name" width={140}/>
               </HStack>
               <Input variant="filled" bg="tertiary" type="email" class="form-control" id="email" placeholder="Email" width={300}/>
               <Input variant="filled" bg="tertiary" type="text" class="form-control" id="username" placeholder="Username" width={300}/>

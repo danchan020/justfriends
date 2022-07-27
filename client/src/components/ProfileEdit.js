@@ -27,7 +27,7 @@ export default function ProfileEdit() {
         bio: user ? user.bio : null,
      };
 
-     console.log(initialUserData)
+    //  console.log(initialUserData)
      
      const [updateUserData, setUpdateUserData] = useState(initialUserData);
      const [error, setError] = useState([]);
