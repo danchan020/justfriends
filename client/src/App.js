@@ -8,13 +8,22 @@ import SignUp from './components/SignUp';
 import UserFeatures from './components/UserFeatures';
 import UserProfile from './components/UserProfile';
 import OtherProfile from './components/OtherProfile';
-import Chats from './components/Chats';
+import Messages from './components/Messages';
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
   const [users, setUsers] = useState([]);
   const [profile, setProfile] = useState({});
+  const [conversations, setConversations] = useState([]);
+
+  useEffect(() => {
+   fetch("/conversations")
+      .then((r) => r.json())
+      .then((data) => {
+         setConversations(data);
+      });
+}, []);
 
   useEffect(() => {
     fetch("/featuredusers")
@@ -55,7 +64,7 @@ function App() {
         <Route path="/signup" element={<SignUp navigate={navigate}/>} />
         <Route path="/myprofile" element={<UserProfile handleSignOut={handleSignOut}/>} />
         <Route path="/features" element={<UserFeatures handleSignOut={handleSignOut} users={users} handleProfileClick={handleProfileClick}/>} />
-        <Route path="/chats" element={<Chats handleSignOut={handleSignOut}/>} />
+        <Route path="/messages" element={<Messages handleSignOut={handleSignOut} conversations={conversations}/>} />
         <Route path="/profile/:id" element={<OtherProfile handleSignOut={handleSignOut} profile={profile}/>}/>
       </Routes>
     </div>

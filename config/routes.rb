@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   patch "/users/:id", to: "users#update"
   delete "/users/:id", to: "users#destroy"
 
+  get "/conversations", to: "conversations#index" 
+
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
