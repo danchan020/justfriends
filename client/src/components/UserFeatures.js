@@ -5,13 +5,13 @@ import { selectUser } from  '../features/user'
 import TopBar from './TopBar'
 import UserCard from './UserCard'
 
-export default function UserFeatures({handleSignOut, users, handleProfileClick}) {
+export default function UserFeatures({handleSignOut, users, handleProfileClick, handleCreateConversation}) {
   const user = useSelector(selectUser)
 
   let renderOtherUsers
   if (users){renderOtherUsers = users.map((user) => {
     return (
-      <UserCard key={user.id}{...user} handleProfileClick={handleProfileClick}/>
+      <UserCard key={user.id}{...user} handleProfileClick={handleProfileClick} handleCreateConversation={handleCreateConversation}/>
       )
     })
   }

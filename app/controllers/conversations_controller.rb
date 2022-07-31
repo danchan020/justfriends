@@ -12,7 +12,7 @@ class ConversationsController < ApplicationController
         else
             @conversation = Conversation.create!(conversation_params)
         end
-        render json: @conversation
+        render json: @conversation, include: :receiver
     end
 
 

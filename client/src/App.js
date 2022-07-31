@@ -8,11 +8,12 @@ import SignUp from './components/SignUp';
 import UserFeatures from './components/UserFeatures';
 import UserProfile from './components/UserProfile';
 import OtherProfile from './components/OtherProfile';
-import Messages from './components/Messages';
+import Conversations from './components/Conversations';
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch()
+  const user = useSelector(selectUser)
   const [users, setUsers] = useState([]);
   const [profile, setProfile] = useState({});
   const [conversations, setConversations] = useState([]);
@@ -57,15 +58,27 @@ function App() {
     navigate(`/profile/${id}`)
  }
 
+ const handleCreateConversation = (id) => {
+   // console.log(id)
+   fetch("/conversations", {
+      method: "POST",
+      headers: {
+         "Content-Type": "application/json",
+      },
+      body: JSON.stringify({author_id: user.id, receiver_id: id})
+   })
+ }
+
   return (
     <div>
       <Routes>
         <Route path="/" element={<Login navigate={navigate}/>} />
         <Route path="/signup" element={<SignUp navigate={navigate}/>} />
         <Route path="/myprofile" element={<UserProfile handleSignOut={handleSignOut}/>} />
-        <Route path="/features" element={<UserFeatures handleSignOut={handleSignOut} users={users} handleProfileClick={handleProfileClick}/>} />
-        <Route path="/messages" element={<Messages handleSignOut={handleSignOut} conversations={conversations}/>} />
+        <Route path="/features" element={<UserFeatures handleSignOut={handleSignOut} users={users} handleProfileClick={handleProfileClick}/>} handleCreateConversation={handleCreateConversation}/>
         <Route path="/profile/:id" element={<OtherProfile handleSignOut={handleSignOut} profile={profile}/>}/>
+        <Route path="/messages" element={<Conversations handleSignOut={handleSignOut} conversations={conversations}/>} />
+        <Route path="/messages/:id" element={<Conversation/>} />
       </Routes>
     </div>
   );

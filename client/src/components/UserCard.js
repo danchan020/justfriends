@@ -3,7 +3,7 @@ import { VStack, HStack, IconButton, Avatar, Text, Tag, Box } from '@chakra-ui/r
 import { ChatIcon } from '@chakra-ui/icons'
 import { CgProfile } from 'react-icons/cg'
 
-export default function UserCard({id, avatar, first_name, last_name, username, handleProfileClick}) {
+export default function UserCard({id, avatar, first_name, last_name, username, handleProfileClick, handleCreateConversation}) {
   return (
     <Box  bg="tertiary" height={65} width="100%">
         <HStack>
@@ -26,6 +26,7 @@ export default function UserCard({id, avatar, first_name, last_name, username, h
                 aria-label='Send Message'
                 size='sm'
                 icon={<ChatIcon/>}
+                onClick={()=>{handleCreateConversation(id)}}
             />
             
         </HStack>
