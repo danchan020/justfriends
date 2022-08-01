@@ -75,7 +75,7 @@ function App() {
 
 
  const handleConversation = (id) => {
-   console.log(id)
+   navigate(`/messages/${id}`)
  }
 
   return (
@@ -87,7 +87,7 @@ function App() {
         <Route path="/features" element={<UserFeatures handleSignOut={handleSignOut} users={users} handleProfileClick={handleProfileClick} handleCreateConversation={handleCreateConversation}/>} />
         <Route path="/profile/:id" element={<OtherProfile handleSignOut={handleSignOut} profile={profile}/>}/>
         <Route path="/messages" element={<Conversations handleSignOut={handleSignOut} conversations={conversations} handleConversation={handleConversation}/>} />
-        <Route path="/messages/:id" element={<Conversation/>} />
+        <Route path="/messages/:id" element={<Conversation conversations={conversations}/>} />
       </Routes>
     </div>
   );

@@ -5,7 +5,6 @@ import { Box, VStack, HStack, Center, Avatar, Text, Tag } from '@chakra-ui/react
 
 export default function Conversations({handleSignOut, conversations, handleConversation}) {
 
-  console.log(conversations)
   let renderConversations
   if (conversations){renderConversations = conversations.map((conversation) => {
 
