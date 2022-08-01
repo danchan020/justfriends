@@ -12,7 +12,7 @@ export default function UserCard({id, avatar, first_name, last_name, username, h
                 <Text>{first_name}{ ' ' }{last_name}</Text>
                 <Tag colorScheme="yellow"> @{ username }</Tag>
             </VStack>
-            <IconButton key={id}
+            <IconButton
                 variant='outline'
                 colorScheme='green'
                 aria-label='See Profile'
@@ -23,10 +23,10 @@ export default function UserCard({id, avatar, first_name, last_name, username, h
             <IconButton
                 variant='outline'
                 colorScheme='green'
-                aria-label='Send Message'
+                aria-label='Create Conversation'
                 size='sm'
                 icon={<ChatIcon/>}
-                onClick={()=>{handleCreateConversation(id)}}
+                onClick={()=> {handleCreateConversation(id)}}
             />
             
         </HStack>

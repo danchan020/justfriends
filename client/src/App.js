@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import { Routes, Route, Link, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
+import { selectUser } from  '../src/features/user'
 import { login, logout } from  '../src/features/user'
 import Login from './components/Login';
 import SignUp from './components/SignUp';
@@ -9,6 +10,7 @@ import UserFeatures from './components/UserFeatures';
 import UserProfile from './components/UserProfile';
 import OtherProfile from './components/OtherProfile';
 import Conversations from './components/Conversations';
+import Conversation from './components/Conversation'
 
 function App() {
   const navigate = useNavigate();
@@ -59,14 +61,21 @@ function App() {
  }
 
  const handleCreateConversation = (id) => {
-   // console.log(id)
    fetch("/conversations", {
       method: "POST",
       headers: {
          "Content-Type": "application/json",
       },
       body: JSON.stringify({author_id: user.id, receiver_id: id})
-   })
+   }).then((r) => r.json()
+   .then((conversation) => {
+      navigate(`/messages/${conversation.id}`)
+   }));
+ }
+
+
+ const handleConversation = (id) => {
+   console.log(id)
  }
 
   return (
@@ -75,9 +84,9 @@ function App() {
         <Route path="/" element={<Login navigate={navigate}/>} />
         <Route path="/signup" element={<SignUp navigate={navigate}/>} />
         <Route path="/myprofile" element={<UserProfile handleSignOut={handleSignOut}/>} />
-        <Route path="/features" element={<UserFeatures handleSignOut={handleSignOut} users={users} handleProfileClick={handleProfileClick}/>} handleCreateConversation={handleCreateConversation}/>
+        <Route path="/features" element={<UserFeatures handleSignOut={handleSignOut} users={users} handleProfileClick={handleProfileClick} handleCreateConversation={handleCreateConversation}/>} />
         <Route path="/profile/:id" element={<OtherProfile handleSignOut={handleSignOut} profile={profile}/>}/>
-        <Route path="/messages" element={<Conversations handleSignOut={handleSignOut} conversations={conversations}/>} />
+        <Route path="/messages" element={<Conversations handleSignOut={handleSignOut} conversations={conversations} handleConversation={handleConversation}/>} />
         <Route path="/messages/:id" element={<Conversation/>} />
       </Routes>
     </div>
