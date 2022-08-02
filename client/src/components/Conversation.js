@@ -1,14 +1,16 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import TopBar from './TopBar'
 import { Box, VStack, HStack, Center, Avatar, Text, FormControl, Input, Button } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
+import { createConsumer } from "@rails/actioncable"
 
 export default function Conversation({handleSignOut, conversations}) {
     let { id } = useParams()
     const user = useSelector(selectUser)
     const [newMessageData, setNewMessageData] = useState({});
+    if(conversations && user){
     const conversation = conversations.find((conversation) => conversation.id == id)
     
     let userDisplayed 
@@ -34,7 +36,9 @@ export default function Conversation({handleSignOut, conversations}) {
     })
 }
         
-
+// useEffect(() => {
+// cable = createConsumer("ws://localhost:3000/cable")
+// })
 
     const handleChange = (e) => {
         setNewMessageData({
@@ -75,4 +79,4 @@ export default function Conversation({handleSignOut, conversations}) {
         </VStack>
     </div>
   )
-}
+}}

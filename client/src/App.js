@@ -19,14 +19,16 @@ function App() {
   const [users, setUsers] = useState([]);
   const [profile, setProfile] = useState({});
   const [conversations, setConversations] = useState([]);
+  
 
+   
   useEffect(() => {
-   fetch("/conversations")
+     fetch("/conversations")
       .then((r) => r.json())
       .then((data) => {
          setConversations(data);
       });
-}, []);
+}, [user]);
 
   useEffect(() => {
     fetch("/featuredusers")
@@ -44,6 +46,31 @@ function App() {
     });
  }, []);
 
+
+// useEffect(() => {
+//    const usersStorage = window.localStorage.getItem("USERS"); setUsers(JSON.parse(usersStorage))
+// },[])
+
+useEffect(() => {
+   const profileStorage = window.localStorage.getItem("PROFILE"); setProfile(JSON.parse(profileStorage))
+},[])
+
+useEffect(() => {
+   const conversationsStorage = window.localStorage.getItem("CONVERSATIONS"); setConversations(JSON.parse(conversationsStorage))
+},[])
+
+// useEffect(() => {
+//    window.localStorage.setItem("USERS", JSON.stringify(users))
+//  },[users])
+ 
+ useEffect(() => {
+    window.localStorage.setItem("PROFILE", JSON.stringify(profile))
+ },[profile])
+ 
+ useEffect(() => {
+    window.localStorage.setItem("CONVERSATIONS", JSON.stringify(conversations))
+ },[conversations])
+
  const handleSignOut = () => {
     fetch("/logout", { method: "DELETE" })
        .then((r) => {
@@ -57,6 +84,7 @@ function App() {
  const handleProfileClick = (id) => {
     const selectedUser = users.find(user => user.id === id);
     setProfile(selectedUser);
+    
     navigate(`/profile/${id}`)
  }
 

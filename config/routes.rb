@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+
+  mount ActionCable.server => "/cable"
   
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
