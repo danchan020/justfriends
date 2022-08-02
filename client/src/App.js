@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import { Routes, Route, Link, useNavigate } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUser } from  '../src/features/user'
 import { login, logout } from  '../src/features/user'
@@ -87,7 +87,7 @@ function App() {
         <Route path="/features" element={<UserFeatures handleSignOut={handleSignOut} users={users} handleProfileClick={handleProfileClick} handleCreateConversation={handleCreateConversation}/>} />
         <Route path="/profile/:id" element={<OtherProfile handleSignOut={handleSignOut} profile={profile}/>}/>
         <Route path="/messages" element={<Conversations handleSignOut={handleSignOut} conversations={conversations} handleConversation={handleConversation}/>} />
-        <Route path="/messages/:id" element={<Conversation conversations={conversations}/>} />
+        <Route path="/messages/:id" element={<Conversation handleSignOut={handleSignOut} conversations={conversations}/>} />
       </Routes>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import TopBar from './TopBar'
-import { Box, VStack, HStack, Center, Avatar, Text, Tag, FormControl, Input, Button } from '@chakra-ui/react'
+import { Box, VStack, HStack, Center, Avatar, Text, FormControl, Input, Button } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
@@ -8,7 +8,28 @@ import { selectUser } from  '../features/user'
 export default function Conversation({handleSignOut, conversations}) {
     const user = useSelector(selectUser)
     let { id } = useParams()
-    const conversation = conversations.find((conversation) => conversation.id == id)
+    const conversation = conversations.find((conversation) => conversation.id === id)
+
+    let renderMessages 
+    if (conversation){renderMessages = conversation.messages.map((message) => {
+        return user.id === message.user_id ? (
+        <div >
+            <Text> {message.body} </Text>
+        </div>) : (
+        <div>
+            <HStack>
+                <Avatar 
+                size='sm'
+                alt={user.id === conversation.author_id ? conversation.receiver.first_name : conversation.author.first_name}
+                src={user.id === conversation.author_id ? conversation.receiver.avatar : conversation.author.avatar}
+                />
+                <Text> {message.body} </Text>
+            </HStack>
+    
+        </div>)
+    })
+}
+        
 
     const [newMessageData, setNewMessageData] = useState({});
 
@@ -20,7 +41,6 @@ export default function Conversation({handleSignOut, conversations}) {
             user_id: user.id,
             body: e.target.value
         })
-        // console.log(newMessageData)
     }
 
     const handleSubmit = (e) => {
@@ -42,6 +62,7 @@ export default function Conversation({handleSignOut, conversations}) {
             Conversation with {userDisplayed.first_name}
             </Center> 
         </Box>
+        {renderMessages}
         <VStack>
             <form onSubmit={handleSubmit}>
                 <FormControl onChange={handleChange}>
