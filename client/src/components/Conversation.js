@@ -6,14 +6,18 @@ import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
 
 export default function Conversation({handleSignOut, conversations}) {
-    const user = useSelector(selectUser)
     let { id } = useParams()
-    const conversation = conversations.find((conversation) => conversation.id === id)
+    const user = useSelector(selectUser)
+    const [newMessageData, setNewMessageData] = useState({});
+    const conversation = conversations.find((conversation) => conversation.id == id)
+    
+    let userDisplayed 
+    if (user.id === conversation.author.id) {userDisplayed = conversation.receiver} else {userDisplayed = conversation.author}
 
     let renderMessages 
     if (conversation){renderMessages = conversation.messages.map((message) => {
         return user.id === message.user_id ? (
-        <div >
+        <div>
             <Text> {message.body} </Text>
         </div>) : (
         <div>
@@ -31,10 +35,6 @@ export default function Conversation({handleSignOut, conversations}) {
 }
         
 
-    const [newMessageData, setNewMessageData] = useState({});
-
-    let userDisplayed 
-    if (user.id === conversation.author.id) {userDisplayed = conversation.receiver} else {userDisplayed = conversation.author}
 
     const handleChange = (e) => {
         setNewMessageData({
