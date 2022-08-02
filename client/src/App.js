@@ -47,10 +47,6 @@ function App() {
  }, []);
 
 
-// useEffect(() => {
-//    const usersStorage = window.localStorage.getItem("USERS"); setUsers(JSON.parse(usersStorage))
-// },[])
-
 useEffect(() => {
    const profileStorage = window.localStorage.getItem("PROFILE"); setProfile(JSON.parse(profileStorage))
 },[])
@@ -58,10 +54,6 @@ useEffect(() => {
 useEffect(() => {
    const conversationsStorage = window.localStorage.getItem("CONVERSATIONS"); setConversations(JSON.parse(conversationsStorage))
 },[])
-
-// useEffect(() => {
-//    window.localStorage.setItem("USERS", JSON.stringify(users))
-//  },[users])
  
  useEffect(() => {
     window.localStorage.setItem("PROFILE", JSON.stringify(profile))
