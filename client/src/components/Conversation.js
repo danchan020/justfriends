@@ -10,6 +10,16 @@ export default function Conversation({handleSignOut, conversations}) {
     let { id } = useParams()
     const user = useSelector(selectUser)
     const [newMessageData, setNewMessageData] = useState({});
+    const [messages, setMessages] = useState([])
+
+    useEffect(() => {
+        fetch(`/conversations/${id}/messages`)
+         .then((r) => r.json())
+         .then((data) => {
+            setMessages(data);
+         });
+   }, []);
+    
 
 
     useEffect(() => {
@@ -22,7 +32,7 @@ export default function Conversation({handleSignOut, conversations}) {
     
     const handlers = {
         received(data){
-            console.log(data)
+            setMessages([...messages,data])
         },
     
         connected(){
@@ -40,7 +50,7 @@ export default function Conversation({handleSignOut, conversations}) {
         cable.current = null
         subscription.unsubscribe()
     }
-    }, [id])
+    }, [id, messages])
 
     if(conversations && user){
     const conversation = conversations.find((conversation) => conversation.id == id)
@@ -50,7 +60,7 @@ export default function Conversation({handleSignOut, conversations}) {
 
     let renderMessages 
 
-    if (conversation.messages){renderMessages = conversation.messages.map((message) => {
+    if (messages){renderMessages = messages.map((message) => {
         return user.id === message.user_id ? (
         <div>
             <Text> {message.body} </Text>
@@ -98,14 +108,18 @@ export default function Conversation({handleSignOut, conversations}) {
         </Box>
         {renderMessages}
         <VStack>
+            
             <form onSubmit={handleSubmit}>
+
                 <FormControl onChange={handleChange}>
-                    <HStack>
+                    {/* <HStack> */}
                         <Input variant="filled" bg="tertiary" type="body" class="form-control" id="body" placeholder="Send message..." width={275}/>
                         <Button variant="solid" bg="secondary" type="submit" width={75} > send </Button>   
-                    </HStack>
+                    {/* </HStack> */}
                 </FormControl>
+
             </form>
+
         </VStack>
     </div>
   )

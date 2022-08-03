@@ -7,8 +7,9 @@ import { Link } from 'react-router-dom'
 export default function ConversationCard({id, author, receiver, messages, handleConversation}) {
 
     const user = useSelector(selectUser)
-    
-    let lastMessage = messages[messages.length - 1]
+
+    let lastMessage 
+    if(messages) {lastMessage = messages[messages.length - 1]}
     let renderMessage
     if (lastMessage){renderMessage = lastMessage.body}
 
