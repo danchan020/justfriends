@@ -7,8 +7,10 @@ import { Link } from 'react-router-dom'
 export default function ConversationCard({id, author, receiver, messages, handleConversation}) {
 
     const user = useSelector(selectUser)
-    // const lastMessage = (messages[messages.length - 1]).body
-
+    
+    let lastMessage = messages[messages.length - 1]
+    let renderMessage
+    if (lastMessage){renderMessage = lastMessage.body}
 
     let userDisplayed 
     if (user.id == author.id) {userDisplayed = receiver} else {userDisplayed = author}
@@ -20,7 +22,7 @@ export default function ConversationCard({id, author, receiver, messages, handle
             <Avatar size='md' src={ userDisplayed.avatar } />
             <VStack>
                 <Text> {userDisplayed.first_name} {' '} {userDisplayed.last_name} </Text>
-                <Text> {messages.last} </Text>
+                <Text> {renderMessage} </Text>
             </VStack>
         </HStack>
     </Box>

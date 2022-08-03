@@ -28,7 +28,7 @@ function App() {
       .then((data) => {
          setConversations(data);
       });
-}, [user]);
+}, []);
 
   useEffect(() => {
     fetch("/featuredusers")
@@ -50,18 +50,11 @@ function App() {
 useEffect(() => {
    const profileStorage = window.localStorage.getItem("PROFILE"); setProfile(JSON.parse(profileStorage))
 },[])
-
-useEffect(() => {
-   const conversationsStorage = window.localStorage.getItem("CONVERSATIONS"); setConversations(JSON.parse(conversationsStorage))
-},[])
  
  useEffect(() => {
     window.localStorage.setItem("PROFILE", JSON.stringify(profile))
  },[profile])
- 
- useEffect(() => {
-    window.localStorage.setItem("CONVERSATIONS", JSON.stringify(conversations))
- },[conversations])
+
 
  const handleSignOut = () => {
     fetch("/logout", { method: "DELETE" })
@@ -89,6 +82,7 @@ useEffect(() => {
       body: JSON.stringify({author_id: user.id, receiver_id: id})
    }).then((r) => r.json()
    .then((conversation) => {
+      setConversations([...conversations, conversation])
       navigate(`/messages/${conversation.id}`)
    }));
  }

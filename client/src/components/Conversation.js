@@ -10,14 +10,47 @@ export default function Conversation({handleSignOut, conversations}) {
     let { id } = useParams()
     const user = useSelector(selectUser)
     const [newMessageData, setNewMessageData] = useState({});
+
+
+    useEffect(() => {
+    const cable = createConsumer("ws://localhost:3000/cable")
+    
+    const paramsToSend = {
+        channel: "ConversationChannel",
+        id: id
+    }
+    
+    const handlers = {
+        received(data){
+            console.log(data)
+        },
+    
+        connected(){
+            console.log("Connected!")
+        },
+    
+        disconnected(){
+            console.log("disconnected")
+        }
+    }
+    
+    const subscription = cable.subscriptions.create( paramsToSend, handlers )
+    return function cleanup(){
+        console.log("unsubbing from", id)
+        cable.current = null
+        subscription.unsubscribe()
+    }
+    }, [id])
+
     if(conversations && user){
     const conversation = conversations.find((conversation) => conversation.id == id)
     
     let userDisplayed 
-    if (user.id === conversation.author.id) {userDisplayed = conversation.receiver} else {userDisplayed = conversation.author}
+    if (user.id === conversation.author_id) {userDisplayed = conversation.receiver} else {userDisplayed = conversation.author}
 
     let renderMessages 
-    if (conversation){renderMessages = conversation.messages.map((message) => {
+
+    if (conversation.messages){renderMessages = conversation.messages.map((message) => {
         return user.id === message.user_id ? (
         <div>
             <Text> {message.body} </Text>
@@ -36,9 +69,6 @@ export default function Conversation({handleSignOut, conversations}) {
     })
 }
         
-// useEffect(() => {
-// cable = createConsumer("ws://localhost:3000/cable")
-// })
 
     const handleChange = (e) => {
         setNewMessageData({
