@@ -52,7 +52,7 @@ export default function Conversation({handleSignOut, conversations}) {
     }
     }, [id, messages])
 
-    if(conversations && user){
+    if(conversations.length > 0 && user){
     const conversation = conversations.find((conversation) => conversation.id == id)
     
     let userDisplayed 
@@ -108,14 +108,14 @@ export default function Conversation({handleSignOut, conversations}) {
         </Box>
         {renderMessages}
         <VStack>
-            
+
             <form onSubmit={handleSubmit}>
 
                 <FormControl onChange={handleChange}>
-                    {/* <HStack> */}
+                    <HStack>
                         <Input variant="filled" bg="tertiary" type="body" class="form-control" id="body" placeholder="Send message..." width={275}/>
                         <Button variant="solid" bg="secondary" type="submit" width={75} > send </Button>   
-                    {/* </HStack> */}
+                    </HStack>
                 </FormControl>
 
             </form>
