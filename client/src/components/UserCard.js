@@ -5,34 +5,38 @@ import { CgProfile } from 'react-icons/cg'
 
 export default function UserCard({id, avatar, first_name, last_name, username, handleProfileClick, handleCreateConversation}) {
   return (
-    <Box  bg="tertiary" height={65} width="100%">
-        <HStack>
-            <Avatar size='md' src={ avatar } />
-            <VStack>
-                <Text>{first_name}{ ' ' }{last_name}</Text>
-                <Tag colorScheme="yellow"> @{ username }</Tag>
-            </VStack>
-            <IconButton
-                variant='outline'
-                colorScheme='green'
-                aria-label='See Profile'
-                size='sm'
-                icon={<CgProfile/>}
-                onClick={()=>{handleProfileClick(id)}}
-            />
-            <IconButton
-                variant='outline'
-                colorScheme='green'
-                aria-label='Create Conversation'
-                size='sm'
-                icon={<ChatIcon/>}
-                onClick={()=> {handleCreateConversation(id)}}
-            />
-            
-        </HStack>
-        <Divider orientation='horizontal' borderColor="primary"/>
+    <div className="chat">
+      <Avatar className='chat_image' size='md' src={ avatar } />
+      <div className='chat_details'>
+        <h2 color='black'> {first_name}{ ' ' }{last_name} </h2>
+        <Tag colorScheme="yellow"> @{ username }</Tag>
+      </div>
+      <div style={{justifyContent: 'space-between'}}>
+        <IconButton
+            variant='outline'
+            colorScheme='green'
+            aria-label='See Profile'
+            size='sm'
+            icon={<CgProfile/>}
+            onClick={()=>{handleProfileClick(id)}}
+        />
+        <IconButton
+            variant='outline'
+            colorScheme='green'
+            aria-label='Create Conversation'
+            size='sm'
+            icon={<ChatIcon/>}
+            onClick={()=> {handleCreateConversation(id)}}
+        />
+      </div>
+  </div>
 
-    </Box>
+                
+
+            
+
+
+
 
   )
 }
