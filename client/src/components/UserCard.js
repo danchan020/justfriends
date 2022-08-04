@@ -1,5 +1,5 @@
 import React from 'react'
-import { VStack, HStack, IconButton, Avatar, Text, Tag, Box } from '@chakra-ui/react'
+import { VStack, HStack, IconButton, Avatar, Text, Tag, Box, Divider } from '@chakra-ui/react'
 import { ChatIcon } from '@chakra-ui/icons'
 import { CgProfile } from 'react-icons/cg'
 
@@ -30,6 +30,8 @@ export default function UserCard({id, avatar, first_name, last_name, username, h
             />
             
         </HStack>
+        <Divider orientation='horizontal' borderColor="primary"/>
+
     </Box>
 
   )

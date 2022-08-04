@@ -6,30 +6,33 @@ import { Link } from 'react-router-dom'
 export default function TopBar({handleSignOut}) {
   return (
     <div>
-    <Center bg="primary"> <img src='/capstone.png' alt='logo' width='100' height='100'/> 
-        <Menu>
-            <MenuButton
-            as={IconButton}
-            aria-label='Options'
-            icon={<HamburgerIcon />}
-            variant='outline'
-            />
-            <MenuList>
-            <MenuItem >
-                <Link to="/features"> Featured Friends </Link>
-            </MenuItem>
-            <MenuItem >
-                <Link to="/myprofile"> My Profile </Link>
-            </MenuItem>
-            <MenuItem >
-                <Link to="/messages"> My Messages </Link>
-            </MenuItem>
-            <MenuItem onClick={handleSignOut}>
-                Logout
-            </MenuItem>
-            </MenuList>
-        </Menu>
-    </Center>
+        <div style={{margin: '10px', display: 'flex', justifyContent: 'center'}}>
+        <img src='/capstone.png' alt='logo' width='100' height='100'/> 
+        </div>
+        <div style={{ position: 'absolute', top: 25, right: 10}}>
+            <Menu>
+                <MenuButton
+                as={IconButton}
+                aria-label='Options'
+                icon={<HamburgerIcon />}
+                variant='outline'
+                />
+                <MenuList>
+                <MenuItem >
+                    <Link to="/features"> Featured Friends </Link>
+                </MenuItem>
+                <MenuItem >
+                    <Link to="/myprofile"> My Profile </Link>
+                </MenuItem>
+                <MenuItem >
+                    <Link to="/messages"> My Messages </Link>
+                </MenuItem>
+                <MenuItem onClick={handleSignOut}>
+                    Logout
+                </MenuItem>
+                </MenuList>
+            </Menu>
+        </div>
     </div>
   )
 }

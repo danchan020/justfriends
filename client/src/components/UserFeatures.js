@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, VStack, HStack, Center, Avatar, Text, Tag } from '@chakra-ui/react'
+import { Box, Center, Divider } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
 import TopBar from './TopBar'
@@ -17,16 +17,16 @@ export default function UserFeatures({handleSignOut, users, handleProfileClick, 
   }
 
   return (
-    <>
+    <div style={{overflow: 'scroll'}}>
       <TopBar handleSignOut={handleSignOut}/>
       <Box bg="secondary"> 
         <Center>
           Recommended Friends
         </Center> 
       </Box>
-      <VStack>
+      <Divider orientation='horizontal' borderColor="primary"/>
         {renderOtherUsers}
-      </VStack>
-    </>
+      <Divider orientation='horizontal' borderColor="secondary"/>
+    </div>
   )
 }
