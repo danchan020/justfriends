@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import './App.css';
 import { Routes, Route, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUser } from  '../src/features/user'
@@ -11,6 +10,8 @@ import UserProfile from './components/UserProfile';
 import OtherProfile from './components/OtherProfile';
 import Conversations from './components/Conversations';
 import Conversation from './components/Conversation'
+import "./Conversation.css"
+import './App.css';
 
 function App() {
   const navigate = useNavigate();

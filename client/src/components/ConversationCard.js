@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
 import { Box, VStack, HStack, Center, Avatar, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import '../Conversation.css'
 
 
 export default function ConversationCard({id, author, receiver, messages}) {

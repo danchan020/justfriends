@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
 import { createConsumer } from "@rails/actioncable"
-import "../Conversation.css"
 
 export default function Conversation({handleSignOut, conversations}) {
     let { id } = useParams()
