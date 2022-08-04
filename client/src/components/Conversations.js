@@ -19,13 +19,14 @@ export default function Conversations({handleSignOut, conversations}) {
   }
 
   return (
-    <div>
+    <div style={{overflow: 'scroll'}}>
         <TopBar handleSignOut={handleSignOut}/>
         <Box bg="secondary"> 
           <Center>
             My Messages
           </Center> 
         </Box>
+        <Divider orientation='horizontal' borderColor="primary"/>
         {renderConversations}
         <Divider orientation='horizontal' />
     </div>

@@ -98,7 +98,7 @@ export default function Conversation({handleSignOut, conversations}) {
     }
 
   return (
-    <div>
+    <div style={{overflow: 'scroll'}}>
         <TopBar handleSignOut={handleSignOut}/>
         <Box bg="secondary"> 
             <Center>
