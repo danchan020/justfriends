@@ -26,7 +26,7 @@ function App() {
       .then((data) => {
          setConversations(data);
       });
-}, []);
+}, [user]);
 
   useEffect(() => {
     fetch("/featuredusers")
@@ -34,7 +34,7 @@ function App() {
        .then((data) => {
           setUsers(data);
        });
- }, []);
+ }, [user]);
 
   useEffect(() => {
     fetch("/me").then((r) => {

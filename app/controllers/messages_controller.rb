@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.create(message_params)
-    ConversationChannel.broadcast_to(@conversation,@message)
+    ConversationChannel.broadcast_to(@conversation , @message)
     render json: @message
   end
 
