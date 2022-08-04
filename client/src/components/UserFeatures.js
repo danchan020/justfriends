@@ -9,7 +9,7 @@ export default function UserFeatures({handleSignOut, users, handleProfileClick, 
   const user = useSelector(selectUser)
 
   let renderOtherUsers
-  if (users){renderOtherUsers = users.map((user) => {
+  if (users.length > 0 && user){renderOtherUsers = users.map((user) => {
     return (
       <UserCard key={user.id}{...user} handleProfileClick={handleProfileClick} handleCreateConversation={handleCreateConversation}/>
       )

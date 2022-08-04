@@ -32,7 +32,9 @@ export default function Login({navigate}) {
     }).then((r) => {
        if (r.ok) {
           r.json()
-             .then((user) => dispatch(login(user)))
+             .then((user) => 
+             dispatch(login(user))
+             )
              .then(navigate("/features"));
        } else {
           r.json().then((errorData) => setError(errorData.error));
@@ -41,7 +43,7 @@ export default function Login({navigate}) {
  };
 
   return (
-    <div>
+    <div bg='primary'>
       <Center> <img src='/capstone.png' alt='logo'/> </Center>
       <Center>
       <form onSubmit={handleSubmit}>

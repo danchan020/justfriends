@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
 import { createConsumer } from "@rails/actioncable"
+import "../Conversation.css"
 
 export default function Conversation({handleSignOut, conversations}) {
     let { id } = useParams()
@@ -62,19 +63,17 @@ export default function Conversation({handleSignOut, conversations}) {
 
     if (messages){renderMessages = messages.map((message) => {
         return user.id === message.user_id ? (
-        <div>
-            <Text> {message.body} </Text>
+        <div className='chatScreen_message'>
+            <p className='chatScreen_textUser'> {message.body} </p>
         </div>) : (
-        <div>
-            <HStack>
+        <div className='chatScreen_message'>
                 <Avatar 
+                className='chatScreen_image'
                 size='sm'
                 alt={user.id === conversation.author_id ? conversation.receiver.first_name : conversation.author.first_name}
                 src={user.id === conversation.author_id ? conversation.receiver.avatar : conversation.author.avatar}
                 />
-                <Text> {message.body} </Text>
-            </HStack>
-    
+                <p className='chatScreen_text'> {message.body} </p>
         </div>)
     })
 }
@@ -107,20 +106,16 @@ export default function Conversation({handleSignOut, conversations}) {
             </Center> 
         </Box>
         {renderMessages}
-        <VStack>
-
+        <div className='chatScreen_input'>
             <form onSubmit={handleSubmit}>
-
                 <FormControl onChange={handleChange}>
                     <HStack>
-                        <Input variant="filled" bg="tertiary" type="body" class="form-control" id="body" placeholder="Send message..." width={275}/>
-                        <Button variant="solid" bg="secondary" type="submit" width={75} > send </Button>   
+                        <Input variant="filled" bg="tertiary" type="body" class="form-control" id="body" placeholder="Type a message..." width={275}/>
+                        <Button variant="solid" bg="secondary" type="submit" width={75} > SEND </Button>   
                     </HStack>
                 </FormControl>
-
             </form>
-
-        </VStack>
+        </div>
     </div>
   )
 }}

@@ -18,8 +18,8 @@ skip_before_action :authorize, only: [:create, :index, :destroy]
    end
 
    def other_users
-      @users = User.all_except(@current_user)
-      render json: @users
+         @users = User.all_except(@current_user)
+         render json: @users
    end
 
    def update

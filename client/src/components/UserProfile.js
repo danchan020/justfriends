@@ -1,5 +1,5 @@
 import React from 'react'
-import { VStack, HStack, Center, Avatar, Text, Tag } from '@chakra-ui/react'
+import { VStack, HStack, Center, Avatar, Text, Tag, Box } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
 import ProfileEdit from './ProfileEdit'
@@ -12,8 +12,12 @@ export default function UserProfile({handleSignOut}) {
   return (
     <>
       <TopBar handleSignOut={handleSignOut}/>
+      <Box bg="secondary"> 
+        <Center>
+          My Profile
+        </Center> 
+      </Box>
       <VStack>
-        <Text> My Profile </Text>
         <Avatar size='2xl' src={ user ? user.avatar : null} />
         <Text> { user ? user.first_name : null }{' '}{user ? user.last_name : null} </Text>
         <Tag> @{ user ? user.username : null }</Tag>

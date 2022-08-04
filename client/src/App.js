@@ -19,8 +19,6 @@ function App() {
   const [users, setUsers] = useState([]);
   const [profile, setProfile] = useState({});
   const [conversations, setConversations] = useState([]);
-  
-
    
   useEffect(() => {
      fetch("/conversations")
@@ -87,20 +85,19 @@ useEffect(() => {
    }));
  }
 
-
- const handleConversation = (id) => {
-   navigate(`/messages/${id}`)
- }
-
   return (
-    <div>
+    <div style={{
+      backgroundColor: '#3A6436',
+      width: '100vw',
+      height: '100vh'
+    }}>
       <Routes>
         <Route path="/" element={<Login navigate={navigate}/>} />
         <Route path="/signup" element={<SignUp navigate={navigate}/>} />
         <Route path="/myprofile" element={<UserProfile handleSignOut={handleSignOut}/>} />
         <Route path="/features" element={<UserFeatures handleSignOut={handleSignOut} users={users} handleProfileClick={handleProfileClick} handleCreateConversation={handleCreateConversation}/>} />
         <Route path="/profile/:id" element={<OtherProfile handleSignOut={handleSignOut} profile={profile}/>}/>
-        <Route path="/messages" element={<Conversations handleSignOut={handleSignOut} conversations={conversations} handleConversation={handleConversation}/>} />
+        <Route path="/messages" element={<Conversations handleSignOut={handleSignOut} conversations={conversations} />} />
         <Route path="/messages/:id" element={<Conversation handleSignOut={handleSignOut} conversations={conversations}/>} />
       </Routes>
     </div>
