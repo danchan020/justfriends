@@ -29,22 +29,24 @@ export default function Login({navigate}) {
           "Content-Type": "application/json",
        },
        body: JSON.stringify(signInData),
-    }).then((r) => {
-       if (r.ok) {
-          r.json()
+    }).then((res) => {
+       if (res.ok) {
+         // console.log(res)
+          res.json()
              .then((user) => 
+            //  console.log(user)
              dispatch(login(user))
              )
              .then(navigate("/features"));
        } else {
-          r.json().then((errorData) => setError(errorData.error));
+          res.json().then((errorData) => setError(errorData.error));
        }
     });
  };
 
   return (
-    <div bg='primary'>
-      <Center> <img src='/capstone.png' alt='logo'/> </Center>
+    <div bg='primary' style={{paddingTop: '85px'}}>
+      <Center style={{paddingBottom: '15px'}}> <img src='/capstone.png' alt='logo'/> </Center>
       <Center>
       <form onSubmit={handleSubmit}>
          <FormControl onChange={handleChange}>
@@ -52,15 +54,18 @@ export default function Login({navigate}) {
                <Input variant="filled" bg="tertiary" type="text" class="form-control" id="username" placeholder="Username" width={300}/>
                <Input variant="filled" bg="tertiary" type="password" class="form-control" id="password" placeholder="Password" width={300}/>
             </Stack>
+            <div style={{marginLeft: '170px', marginTop: '3px', marginBottom: '3px'}}>
                <Text>Forgot password?</Text>
+            </div>
                <Button variant="solid" bg="secondary" type="submit" width={300}> Log In </Button>
          </FormControl>
       </form>
       </Center>
       <Center>
-         <Text>Don't have an account? {' '} <Link to="/signup">Sign Up</Link> </Text>
+         <div style={{marginTop: '3px'}}>
+            <Text>Don't have an account? {' '} <Link to="/signup">Sign Up</Link> </Text>
+         </div>
       </Center>
     </div>
-    
   )
 }

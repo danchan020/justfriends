@@ -37,20 +37,20 @@ export default function SignUp({navigate}) {
           "Content-Type": "application/json",
        },
        body: JSON.stringify(signUpData),
-    }).then((r) => {
-       if (r.ok) {
-          r.json()
+    }).then((res) => {
+       if (res.ok) {
+          res.json()
              .then((user) => dispatch(login(user)))
              .then(navigate("/features")) 
        } else {
-          r.json().then((errorData) => setError(errorData.error));
+          res.json().then((errorData) => setError(errorData.error));
        }
     });
  };
 
   return (
-    <div>
-      <Center> <img src='/capstone.png' alt='logo'/> </Center>
+    <div style={{paddingTop: '65px'}}>
+      <Center style={{paddingBottom: '15px'}}> <img src='/capstone.png' alt='logo'/> </Center>
       <Center>
         <form onSubmit={handleSubmit}>
           <FormControl onChange={handleChange}>
@@ -69,7 +69,9 @@ export default function SignUp({navigate}) {
         </form> 
       </Center>
       <Center>
-        <Text>Already have an account? {' '} <Link to="/" >Log In </Link> </Text>
+        <div style={{marginTop: '3px'}}>
+          <Text>Already have an account? {' '} <Link to="/" >Log In </Link> </Text>
+        </div>
       </Center>
     </div>
   )
