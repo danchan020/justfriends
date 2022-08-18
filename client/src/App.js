@@ -27,7 +27,7 @@ function App() {
       .then((data) => {
          setConversations(data);
       });
-}, [user]);
+}, []);
 
   useEffect(() => {
     fetch("/featuredusers")

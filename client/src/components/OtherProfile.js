@@ -5,7 +5,7 @@ import TopBar from './TopBar'
 export default function OtherProfile({profile, handleSignOut}) {
 
   return (
-    <div>
+    <div style={{overflow: 'scroll'}}>
       <TopBar handleSignOut={handleSignOut}/>
         <Box bg="secondary">
           <Center>  {profile.first_name}'s Profile </Center>

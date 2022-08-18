@@ -15,7 +15,4 @@ class Conversation < ApplicationRecord
         OR (conversations.receiver_id = ? AND conversations.author_id = ?)", author_id, receiver_id, receiver_id, author_id)
     end
 
-
-
-
 end

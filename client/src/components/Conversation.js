@@ -45,6 +45,7 @@ export default function Conversation({handleSignOut, conversations}) {
     }
     
     const subscription = cable.subscriptions.create( paramsToSend, handlers )
+    
     return function cleanup(){
         console.log("unsubbing from", id)
         cable.current = null
@@ -87,6 +88,7 @@ export default function Conversation({handleSignOut, conversations}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        e.target.reset()
         fetch(`/conversations/${conversation.id}/messages`, {
         method: "POST",
         headers: {

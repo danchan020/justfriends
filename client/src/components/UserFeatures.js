@@ -8,9 +8,6 @@ import UserCard from './UserCard'
 export default function UserFeatures({handleSignOut, users, handleProfileClick, handleCreateConversation}) {
   const user = useSelector(selectUser)
 
-console.log(user)
-console.log(users)
-
   let renderOtherUsers
   if (users.length > 0 && user){renderOtherUsers = users.map((user) => {
     return (
