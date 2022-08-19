@@ -20,6 +20,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [profile, setProfile] = useState({});
   const [conversations, setConversations] = useState([]);
+  const [messages, setMessages] = useState([])
    
   useEffect(() => {
      fetch("/conversations")
@@ -27,7 +28,7 @@ function App() {
       .then((data) => {
          setConversations(data);
       });
-}, []);
+}, [user, messages]);
 
   useEffect(() => {
     fetch("/featuredusers")
@@ -99,7 +100,7 @@ useEffect(() => {
         <Route path="/features" element={<UserFeatures handleSignOut={handleSignOut} users={users} handleProfileClick={handleProfileClick} handleCreateConversation={handleCreateConversation}/>} />
         <Route path="/profile/:id" element={<OtherProfile handleSignOut={handleSignOut} profile={profile}/>}/>
         <Route path="/messages" element={<Conversations handleSignOut={handleSignOut} conversations={conversations} />} />
-        <Route path="/messages/:id" element={<Conversation handleSignOut={handleSignOut} conversations={conversations}/>} />
+        <Route path="/messages/:id" element={<Conversation handleSignOut={handleSignOut} conversations={conversations} messages={messages} setMessages={setMessages}/>} />
       </Routes>
     </div>
   );

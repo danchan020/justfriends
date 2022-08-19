@@ -10,8 +10,7 @@ export default function OtherProfile({profile, handleSignOut}) {
         <Box bg="secondary">
           <Center>  {profile.first_name}'s Profile </Center>
         </Box>
-
-        <Box bg="secondary" marginTop={15} maxW='sm' borderWidth='1px' borderRadius='lg' paddingTop={10} paddingBottom={10}>
+        <Box bg="secondary" marginTop={15} maxW='sm' borderWidth='1px' borderRadius='lg' paddingTop={10} paddingBottom={10} marginLeft="auto" marginRight="auto" >
       <VStack>
         <Avatar size='2xl' src={profile.avatar} />
         <Text> { profile.first_name}{' '}{profile.last_name} </Text>

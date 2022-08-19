@@ -19,7 +19,7 @@ export default function UserProfile({handleSignOut}) {
       </Box>
       <Divider orientation='horizontal' borderColor="primary"/>
 
-      <Box bg="secondary" marginTop={15} maxW='sm' borderWidth='1px' borderRadius='lg' paddingTop={10} paddingBottom={10}> 
+      <Box bg="secondary" marginTop={15} maxW='sm' borderWidth='1px' borderRadius='lg' paddingTop={10} paddingBottom={10} marginLeft="auto" marginRight="auto"> 
       <VStack>
         <Avatar size='2xl' src={ user ? user.avatar : null} />
         <Text> { user ? user.first_name : null }{' '}{user ? user.last_name : null} </Text>

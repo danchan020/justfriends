@@ -6,11 +6,10 @@ import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
 import { createConsumer } from "@rails/actioncable"
 
-export default function Conversation({handleSignOut, conversations}) {
+export default function Conversation({handleSignOut, conversations, messages, setMessages}) {
     let { id } = useParams()
     const user = useSelector(selectUser)
     const [newMessageData, setNewMessageData] = useState({});
-    const [messages, setMessages] = useState([])
 
     useEffect(() => {
         fetch(`/conversations/${id}/messages`)
