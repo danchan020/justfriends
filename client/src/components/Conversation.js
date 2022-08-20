@@ -1,16 +1,20 @@
 import React, {useEffect, useState, useRef} from 'react'
 import TopBar from './TopBar'
-import { Box, VStack, HStack, Center, Avatar, Text, FormControl, Input, Button } from '@chakra-ui/react'
+import { Box, VStack, HStack, Center, Avatar, Text, FormControl, Input, Button, IconButton } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
 import { createConsumer } from "@rails/actioncable"
+import { CgSmile } from 'react-icons/cg'
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 
 export default function Conversation({handleSignOut, conversations, messages, setMessages}) {
     let { id } = useParams()
     const user = useSelector(selectUser)
     const messageLast = useRef(null)
     const [newMessageData, setNewMessageData] = useState({});
+    const [showEmojis, setShowEmojis] = useState(false);
 
     useEffect(() => {
         fetch(`/conversations/${id}/messages`)
@@ -79,7 +83,7 @@ export default function Conversation({handleSignOut, conversations, messages, se
         </div>)
     })
 }
-        
+        console.log(newMessageData)
 
     const handleChange = (e) => {
         setNewMessageData({
@@ -88,9 +92,21 @@ export default function Conversation({handleSignOut, conversations, messages, se
         })
     }
 
+    const addEmoji = (e) => {
+        console.log('hi')
+        let sym = e.unified.split("-");
+        let codesArray = [];
+        sym.forEach((el) => codesArray.push("0x" + el));
+        let emoji = String.fromCodePoint(...codesArray);
+        setNewMessageData({
+            user_id: user.id,
+            body: newMessageData.body + emoji});
+            setShowEmojis(false)
+        };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        e.target.reset()
+        setNewMessageData({user_id: user.id, body:''})
         fetch(`/conversations/${conversation.id}/messages`, {
         method: "POST",
         headers: {
@@ -116,9 +132,20 @@ export default function Conversation({handleSignOut, conversations, messages, se
             <form onSubmit={handleSubmit}>
                 <FormControl onChange={handleChange}>
                     <HStack>
-                        <Input variant="filled" bg="tertiary" type="body" class="form-control" id="body" placeholder="Type a message..." width={275}/>
+                        <IconButton
+                            bg='secondary'
+                            aria-label='Emojis'
+                            size='sm'
+                            icon={<CgSmile size={25}/>}
+                            onClick={()=>{setShowEmojis(!showEmojis)}}
+                        />
+                        <Input value={newMessageData.body} variant="filled" bg="tertiary" type="body" class="form-control" id="body" placeholder="Type a message..." width={275}/>
                         <Button variant="solid" bg="secondary" type="submit" width={75} > SEND </Button>   
                     </HStack>
+                        {showEmojis && (
+                        <div style={{marginTop: '7px'}}>
+                            <Picker onEmojiSelect={addEmoji} data={data} />
+                        </div>)}
                 </FormControl>
             </form>
         </div>
