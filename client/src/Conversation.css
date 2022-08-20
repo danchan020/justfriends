@@ -50,3 +50,10 @@
     background-color: #3A6436;
     justify-content: center;
 }
+
+.chatBox {
+    position: relative;
+    overflow-y: auto;
+    margin-bottom: 50px;
+    background-color: #3A6436;
+}

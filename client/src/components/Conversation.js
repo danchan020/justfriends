@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import TopBar from './TopBar'
 import { Box, VStack, HStack, Center, Avatar, Text, FormControl, Input, Button } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
@@ -9,6 +9,7 @@ import { createConsumer } from "@rails/actioncable"
 export default function Conversation({handleSignOut, conversations, messages, setMessages}) {
     let { id } = useParams()
     const user = useSelector(selectUser)
+    const messageLast = useRef(null)
     const [newMessageData, setNewMessageData] = useState({});
 
     useEffect(() => {
@@ -18,8 +19,10 @@ export default function Conversation({handleSignOut, conversations, messages, se
             setMessages(data);
          });
    }, []);
-    
 
+   useEffect(() => {
+    if (messageLast.current) {messageLast.current.scrollIntoView({behavior: 'smooth'})}
+  }, [messages])
 
     useEffect(() => {
     const cable = createConsumer("ws://localhost:3000/cable")
@@ -105,7 +108,10 @@ export default function Conversation({handleSignOut, conversations, messages, se
             Conversation with {userDisplayed.first_name}
             </Center> 
         </Box>
-        {renderMessages}
+        <div className='chatBox' >
+            {renderMessages}
+        </div>
+        <div ref={messageLast} />
         <div className='chatScreen_input'>
             <form onSubmit={handleSubmit}>
                 <FormControl onChange={handleChange}>
