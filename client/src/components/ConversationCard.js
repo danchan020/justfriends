@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
-import { Box, VStack, HStack, Center, Avatar, Text } from '@chakra-ui/react'
+import { Avatar } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
 

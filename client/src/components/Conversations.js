@@ -1,7 +1,7 @@
 import React from 'react'
 import TopBar from './TopBar'
 import ConversationCard from './ConversationCard'
-import { Box, VStack, HStack, Center, Avatar, Text, Tag, Divider } from '@chakra-ui/react'
+import { Box, Center, Divider } from '@chakra-ui/react'
 import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'
 

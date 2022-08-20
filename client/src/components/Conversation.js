@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react'
 import TopBar from './TopBar'
-import { Box, VStack, HStack, Center, Avatar, Text, FormControl, Input, Button, IconButton } from '@chakra-ui/react'
+import { Box, HStack, Center, Avatar, FormControl, Input, Button, IconButton } from '@chakra-ui/react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectUser } from  '../features/user'

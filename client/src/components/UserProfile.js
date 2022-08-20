@@ -27,7 +27,7 @@ export default function UserProfile({handleSignOut}) {
         <Text> { user ? user.email : null } </Text>
         <Text> { user ? user.bio : null } </Text>
       </VStack>
-      <Center>
+      <Center marginTop="10px">
         <HStack>
           <ProfileEdit/>
           <ProfileDelete handleSignOut={handleSignOut}/>
