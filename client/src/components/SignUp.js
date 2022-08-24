@@ -21,7 +21,7 @@ export default function SignUp({navigate}) {
  };
 
  const [signUpData, setSignUpData] = useState(newUser);
- const [error, setError] = useState([]);
+ const [errors, setErrors] = useState([]);
 
  const handleChange = (e) => {
     const { id, value } = e.target;
@@ -43,7 +43,7 @@ export default function SignUp({navigate}) {
              .then((user) => dispatch(login(user)))
              .then(navigate("/features")) 
        } else {
-          res.json().then((errorData) => setError(errorData.error));
+          res.json().then((errorData) => setErrors(errorData.errors));
        }
     });
  };
@@ -68,6 +68,19 @@ export default function SignUp({navigate}) {
           </FormControl>
         </form> 
       </Center>
+      {errors.length > 0 && (
+                           <div
+                              style={{
+                                 color: "red",
+                                 listStyleType: "none",
+                                 textAlign: "center",
+                              }}
+                           >
+                              {errors.map((error) => (
+                                 <p key={error}>{error}</p>
+                              ))}
+                           </div>
+                        )}
       <Center>
         <div style={{marginTop: '3px'}}>
           <Text>Already have an account? {' '} <Link to="/" >Log In </Link> </Text>

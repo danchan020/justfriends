@@ -61,6 +61,17 @@ export default function Login({navigate}) {
          </FormControl>
       </form>
       </Center>
+      {error.length > 0 && (
+                        <div
+                           style={{
+                              color: "red",
+                              listStyleType: "none",
+                              textAlign: "center",
+                           }}
+                        >
+                           <p>{error}</p>
+                        </div>
+                     )}
       <Center>
          <div style={{marginTop: '3px'}}>
             <Text>Don't have an account? {' '} <Link to="/signup">Sign Up</Link> </Text>
