@@ -8,5 +8,7 @@ To visit the live website: https://justfriendsapp.herokuapp.com/ (*give it a few
 ## Overview
 
 - Utilizes Rails Action Cable to integrate WebSockets for real-time messaging
-- Users are able to view other user's profile with full CRUD capabilities on their own account
+- Users are able to view other user's profile and have full CRUD capabilities on their own account
 - Start conversations and create messages with emoji integration 
+
+## GIF
