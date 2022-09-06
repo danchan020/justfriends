@@ -1,24 +1,12 @@
-# README
+# JustFriends
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A React/Rails web application for live messaging in real time.
+<br>
+<br>
+To visit the live website: https://justfriendsapp.herokuapp.com/ (*give it a few seconds on first load*)
 
-Things you may want to cover:
+## Overview
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Utilizes Rails Action Cable to integrate WebSockets for real-time messaging
+- Users are able to view other user's profile with full CRUD capabilities on their own account
+- Start conversations and create messages with emoji integration 
