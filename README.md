@@ -12,3 +12,5 @@ To visit the live website: https://justfriendsapp.herokuapp.com/ (*give it a few
 - Start conversations and create messages with emoji integration 
 
 ## GIF
+
+![app](https://media.giphy.com/media/k8auqmTsFkOcsH7zHp/giphy.gif)
