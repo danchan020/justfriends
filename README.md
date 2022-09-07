@@ -12,7 +12,16 @@ To visit the <a href="https://justfriendsapp.herokuapp.com/"> Live Website </a> 
 - Users are able to view other user's profile and have full CRUD capabilities on their own account
 - Start conversations and create messages with emoji integration 
 
-## GIF
+## GIFs
 
-<img src="client/public/chatgif.gif" width="600">
-User to user real time messaging
+<div align="center">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="client/public/loginsignup.gif" width="300"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <img src="client/public/profiles.gif" width="300">
+:-------------------------:|:-------------------------:
+Login and Signup  |  View other profiles and interact with personal profile
+
+| <img src="client/public/chatgif.gif" width="650"> |
+:-------------------------:
+| User to user real time messaging |
+  
+</div>
