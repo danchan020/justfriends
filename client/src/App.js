@@ -94,13 +94,13 @@ useEffect(() => {
       height: '100vh'
     }}>
       <Routes>
-        <Route path="/" element={<Login navigate={navigate}/>} />
-        <Route path="/signup" element={<SignUp navigate={navigate}/>} />
-        <Route path="/myprofile" element={<UserProfile handleSignOut={handleSignOut}/>} />
-        <Route path="/features" element={<UserFeatures handleSignOut={handleSignOut} users={users} handleProfileClick={handleProfileClick} handleCreateConversation={handleCreateConversation}/>} />
-        <Route path="/profile/:id" element={<OtherProfile handleSignOut={handleSignOut} profile={profile}/>}/>
-        <Route path="/messages" element={<Conversations handleSignOut={handleSignOut} conversations={conversations} />} />
-        <Route path="/messages/:id" element={<Conversation handleSignOut={handleSignOut} conversations={conversations} messages={messages} setMessages={setMessages}/>} />
+        <Route path="/" element={user ? null : (<Login navigate={navigate}/>)} />
+        <Route path="/signup" element={user ? null : (<SignUp navigate={navigate}/>)} />
+        <Route path="/myprofile" element={user ? (<UserProfile handleSignOut={handleSignOut}/>) : null} />
+        <Route path="/features" element={user ? (<UserFeatures handleSignOut={handleSignOut} users={users} handleProfileClick={handleProfileClick} handleCreateConversation={handleCreateConversation}/>) : null} />
+        <Route path="/profile/:id" element={user ? (<OtherProfile handleSignOut={handleSignOut} profile={profile}/>) : null}/>
+        <Route path="/messages" element={user ? (<Conversations handleSignOut={handleSignOut} conversations={conversations} />) : null} />
+        <Route path="/messages/:id" element={user ? (<Conversation handleSignOut={handleSignOut} conversations={conversations} messages={messages} setMessages={setMessages}/>) : null} />
       </Routes>
     </div>
   );
