@@ -22,28 +22,31 @@ function App() {
   const [conversations, setConversations] = useState([]);
   const [messages, setMessages] = useState([])
    
-  useEffect(() => {
+   useEffect(() => {
+   if (user) {
      fetch("/conversations")
       .then((r) => r.json())
       .then((data) => {
          setConversations(data);
-      });
+      });}
 }, [user, messages]);
 
   useEffect(() => {
+   if (user) {
     fetch("/featuredusers")
        .then((r) => r.json())
        .then((data) => {
           setUsers(data);
-       });
+       });}
  }, [user]);
 
   useEffect(() => {
+   if (user) {
     fetch("/me").then((r) => {
        if (r.ok) {
           r.json().then((user) => dispatch(login(user)))
        }
-    });
+    });}
  }, []);
 
 
