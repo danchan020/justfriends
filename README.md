@@ -4,7 +4,7 @@ A React/Rails web application for live messaging in real time.
 <br>
 <br>
 To watch the <a href="https://www.loom.com/share/6e4d20ad5c4f474da4dc8f24e27e2083"> Demo </a> <br>
-To visit the <a href="https://justfriendsapp.herokuapp.com/"> Live Website </a> <br>
+To visit the <a href="https://justfriendsapp.herokuapp.com/"> Live Website </a> <span> (offline since Heroku updated the free hosting tier) </span><br>
 
 ## Overview
 
